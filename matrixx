@@ -1,0 +1,99 @@
+#/bin/bash
+
+python_command="python3"
+task=""
+filename=""
+add_para="OPTIONAL"  #for additional parameter 
+file_format="OPTIONAL"
+solver_inst="" #python instance for the chosen semantics 
+
+
+#get the commands from the commandline
+
+
+#take the input as array
+
+author_info () {
+    echo Welcome to the MatrixX!
+    echo MatrixX 0.96 - 03/2021
+    echo Argumentation Framework - Solver
+    echo Author: Maximilian Heinrich
+    echo E-Mail: mheinrich@informatik.uni-leipzig.de
+    }
+
+problems_supported() {
+    echo [CE-ST,SE-ST,DC-ST,DS-ST,CE-CO,SE-CO,DC-CO,DS-CO] 
+}
+
+formats_supported(){
+    echo [apx,tgf]
+}
+
+
+if [[ $# -eq 0 ]]
+then { 
+author_info
+   }
+fi
+
+
+while [[ $# -gt 0 ]]
+do
+   # echo argument
+   # echo $1
+   # echo length
+   # echo $#
+   # echo
+    
+case $1 in
+    --formats)
+	formats_supported
+	shift 
+	;;
+
+    --problems)
+	problems_supported
+	shift 
+	;;
+
+    -p)
+	task=$2
+	shift 2
+	;;
+
+    -f)
+	filename=$2
+	shift 2
+	;;
+
+    -fo)
+	file_format=$2
+	shift 2
+	;;
+
+    -a)
+	add_para=$2
+	shift 2
+	;;
+	
+    *)
+	echo error argument $1 unknown
+	shift
+	;;
+   
+esac
+done
+
+#choose the solver for the specified semantics
+if [[ $task == *"-CO"* ]]
+then
+   solver_inst="complete"
+else
+    solver_inst="stable"
+fi
+
+
+#initalize the solver 
+if [[ "$filename" != "" ]]; then    
+$python_command ${solver_inst}_matrixx_v096.py -p $task -f $filename -fo $file_format -a $add_para 
+fi
