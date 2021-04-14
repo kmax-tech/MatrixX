@@ -46,7 +46,7 @@ For supported formats run:
 
 The solver supports apx and tgf files.
 
-The usage of the solver is according to the ICCMA 2021 Competiton Rules.
+The usage of the solver is according to the ICCMA 2021 Competition Rules.
 
 ####Options:
 - -p problem
