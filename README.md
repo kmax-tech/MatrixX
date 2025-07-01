@@ -64,4 +64,4 @@ The usage of the solver is according to the ICCMA 2021 Competition Rules.
 
 Author: Maximilian Heinrich
 
-E-Mail: maximilian.heinrich@uni-weimar.de
+E-Mail: maximilian.heinrich[add]uni-weimar.de
